@@ -1,0 +1,55 @@
+@import './reset.less';
+@import './variables.less';
+
+html,
+body,
+#app {
+  height: 100%;
+  color: #333;
+  font-family: Arial, Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, sans-serif;
+  background-color: var(--sunshine-background-color);
+}
+
+.app-container {
+  padding-bottom: 50px;
+}
+
+/* stylelint-disable-next-line selector-id-pattern */
+#__vconsole {
+  display: none;
+}
+
+.fixIphonex {
+  padding-bottom: var(--sunshine-safe-bottom) !important;
+
+  &::after {
+    content: '';
+    position: fixed;
+    bottom: 0 !important;
+    left: 0;
+    height: calc(var(--sunshine-safe-bottom) + 1px);
+    width: 100%;
+    background: #fff;
+  }
+}
+
+/* 适配iphonex */
+
+@supports (bottom: env(safe-area-inset-bottom)) {
+  .app-container {
+    padding-bottom: calc(env(safe-area-inset-bottom) + 50px); // 这里是重点
+  }
+
+  .bottom-button-box {
+    bottom: env(safe-area-inset-bottom); // 这里是重点
+    &::after {
+      content: '';
+      height: env(safe-area-inset-bottom); // 这里是重点
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: #fff;
+    }
+  }
+}
