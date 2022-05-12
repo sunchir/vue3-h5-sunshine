@@ -5,11 +5,13 @@ import { useGlobSetting } from '../../hooks/useGlobSetting';
 
 const globalSettings = useGlobSetting();
 
-const request = axios.create({
+export const request = axios.create({
   baseUrl: globalSettings.apiUrl,
   timeout: 5000,
   // withCredentials: false,
 });
+
+console.log(globalSettings.apiUrl);
 
 // Request interceptors
 request.interceptors.request.use(

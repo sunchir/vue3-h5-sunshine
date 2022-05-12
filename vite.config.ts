@@ -14,11 +14,7 @@ export default ({ command, mode }) => {
 
   const root = process.cwd();
 
-  console.log(root, mode);
-
   const env = loadEnv(mode, root);
-
-  console.log(env);
 
   const { VITE_PUBLIC_PATH, VITE_PORT } = wrapperEnv(env);
 

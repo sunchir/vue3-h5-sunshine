@@ -31,6 +31,7 @@
     "tests/**/*.ts",
     "src/**/*.ts",
     "src/**/*.d.ts",
+    "src/**/*.config.ts",
     "src/**/*.tsx",
     "src/**/*.vue",
     "types/**/*.d.ts",

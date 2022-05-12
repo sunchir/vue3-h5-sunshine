@@ -8,8 +8,12 @@ import 'amfe-flexible/index.js';
 // 全局引入按需引入UI库 vant
 import { vantPlugins } from './plugins/vant';
 
+import { setupStore } from '/@/store';
+
 const app = createApp(App);
 
 app.use(vantPlugins);
 setupRouter(app);
+// Configure store
+setupStore(app);
 app.mount('#app');

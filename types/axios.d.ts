@@ -23,3 +23,5 @@ declare module 'axios' {
     patch<T = any>(url: string, data?: any, config?: AxiosRequestConfig): Promise<T>;
   }
 }
+
+export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;

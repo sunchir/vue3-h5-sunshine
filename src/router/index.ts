@@ -5,7 +5,7 @@ import { useSetTitle } from '/@/hooks/useSetTitle';
 import { useGlobSetting } from '/@/hooks/useGlobSetting';
 
 const router = createRouter({
-  history: createWebHistory('/'),
+  history: createWebHistory(useGlobSetting().publicPath),
   // to performmance like the normal bower, When pressing the back / forward button
   scrollBehavior(_to, _from, savedPosition) {
     if (savedPosition) {
