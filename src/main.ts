@@ -16,4 +16,5 @@ app.use(vantPlugins);
 setupRouter(app);
 // Configure store
 setupStore(app);
+
 app.mount('#app');

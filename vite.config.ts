@@ -16,7 +16,9 @@ export default ({ command, mode }) => {
 
   const env = loadEnv(mode, root);
 
-  const { VITE_PUBLIC_PATH, VITE_PORT } = wrapperEnv(env);
+  const viteEnv = wrapperEnv(env);
+
+  const { VITE_PUBLIC_PATH, VITE_PORT } = viteEnv;
 
   const isBuild = command === 'build';
 
@@ -44,6 +46,28 @@ export default ({ command, mode }) => {
       host: true,
       port: Number(VITE_PORT),
     },
-    plugins: createVitePlugins(env, isBuild),
+    esbuild: {
+      pure: [],
+    },
+    build: {
+      target: 'es2015',
+      cssTarget: 'chrome80',
+      outDir: 'dist',
+      // minify: 'terser',
+      /**
+       * 当 minify=“minify:'terser'” 解开注释
+       * Uncomment when minify="minify:'terser'"
+       */
+      // terserOptions: {
+      //   compress: {
+      //     keep_infinity: true,
+      //     drop_console: VITE_DROP_CONSOLE,
+      //   },
+      // },
+      // Turning off brotliSize display can slightly reduce packaging time
+      brotliSize: false,
+      chunkSizeWarningLimit: 2000,
+    },
+    plugins: createVitePlugins(viteEnv, isBuild),
   });
 };

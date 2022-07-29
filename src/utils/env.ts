@@ -1,7 +1,8 @@
 import type { GlobEnvConfig } from '/#/config';
+import { getConfigFileName } from '../../build/getConfigFileName';
 
 export function getAppEnvConfig() {
-  const ENV_NAME = import.meta.env;
+  const ENV_NAME = getConfigFileName(import.meta.env);
 
   const ENV = (import.meta.env.DEV
     ? // Get the global configuration (the configuration will be extracted independently when packaging)

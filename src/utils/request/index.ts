@@ -6,7 +6,7 @@ import { useGlobSetting } from '../../hooks/useGlobSetting';
 const globalSettings = useGlobSetting();
 
 export const request = axios.create({
-  baseUrl: globalSettings.apiUrl,
+  baseURL: globalSettings.apiUrl,
   timeout: 5000,
   // withCredentials: false,
 });
