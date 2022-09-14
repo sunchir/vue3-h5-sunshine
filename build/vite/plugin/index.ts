@@ -1,23 +1,18 @@
 import type { PluginOption } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { createStyleImportPlugin } from 'vite-plugin-style-import';
 import { configHtmlPlugin } from './html';
 import vueSetupExtend from 'vite-plugin-vue-setup-extend';
 import { configMockPlugin } from './mock';
+import Components from 'unplugin-vue-components/vite';
+import { VantResolver } from 'unplugin-vue-components/resolvers';
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild = false) {
   const { VITE_USE_MOCK } = viteEnv;
   const vitePlugins: (PluginOption | PluginOption[])[] = [
     vue(),
     vueSetupExtend(),
-    createStyleImportPlugin({
-      libs: [
-        {
-          libraryName: 'vant',
-          esModule: true,
-          resolveStyle: (name) => `vant/es/${name}/style`,
-        },
-      ],
+    Components({
+      resolvers: [VantResolver()],
     }),
   ];
 
